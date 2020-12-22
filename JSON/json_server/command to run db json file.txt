@@ -1,0 +1,3 @@
+// json-server --watch db.json
+and in browser write link address in the address bar 
+http://localhost:3000/contacts 

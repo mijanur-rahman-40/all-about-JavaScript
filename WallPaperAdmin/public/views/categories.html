@@ -1,0 +1,216 @@
+<h2>Categories</h2>
+<hr/>
+<div class="row">
+    <div class="col-lg-5">
+        <h4>Add new</h4>
+        <form id="category-form">
+            <div class="form-group">
+                <label for="category-name">Enter name</label>
+                <input type="text" class="form-control" id="category-name">
+                <div class="invalid-feedback">
+                    Please enter a category name
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category-description">Description</label>
+                <input type="text" class="form-control" id="category-description">
+                <div class="invalid-feedback">
+                    Please enter a some short description for the category
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="category-thumbnail">Category-thumbnail</label>
+                <input type="file" id="category-thumbnail" class="form-control py-0">
+                <div class="invalid-feedback">
+                    Please choose a valid image thumbnail
+                </div>
+            </div>
+            <div class="form-group">
+                <img id="selected-thumbnail" width="250" height="150" class="rounded">
+            </div>
+            <div class="form-group">
+                <div class="progress">
+                    <div class="progress-bar" id="upload-progress" style="width:0%">0%</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" id="save-category" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="result">
+
+    </div>
+
+    <div class="col-lg-7">
+        <h4>Saved Categories</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Thumbnail</th>
+                </tr>
+            </thead>
+            <tbody id="categories">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<script>
+
+    let validImageTypes = ["image/gif", "image/jpeg", "image/jpg", "image/png"];
+    $("#selected-thumbnail").hide();
+
+    function previewThumbnail(thumbnail)
+    {
+        if (thumbnail.files && thumbnail.files[0])
+        {
+            let reader = new FileReader();
+            reader.onload = function (e)
+            {
+                $("#selected-thumbnail").attr('src', e.target.result);
+                $("#selected-thumbnail").fadeIn();
+            }
+            reader.readAsDataURL(thumbnail.files[0]);
+        }
+    }
+
+    $("#category-thumbnail").change(function ()
+    {
+        previewThumbnail(this);
+    });
+
+    $("#save-category").click(function ()
+    {
+        $("#category-name").removeClass("is-invalid");
+        $("#category-description").removeClass("is-invalid");
+        $("#category-thumbnail").removeClass("is-invalid");
+
+        let categoryName = $("#category-name").val();
+        let categoryDescription = $("#category-description").val();
+        let thumbnail = $("#category-thumbnail").prop("files")[0];
+
+        if (!categoryName)
+        {
+            $("#category-name").addClass("is-invalid");
+            return;
+        }
+        if (!categoryDescription)
+        {
+            $("#category-description").addClass("is-invalid");
+            return;
+        }
+        if (thumbnail == null)
+        {
+            $("#category-thumbnail").addClass("is-invalid");
+            return;
+        }
+        if ($.inArray(thumbnail["type"], validImageTypes) < 0)
+        {
+            $("#category-thumbnail").addClass("is-invalid");
+            return;
+        }
+
+        // upload the image and save category
+        let databaseReference = firebase.database().ref("categories/" + categoryName);
+        databaseReference.once("value").then(function (snapshot)
+        {
+            if (snapshot.exists())
+            {
+                $("#result").attr("class", "alert alert-danger");
+                $("#result").html("Category already exists");
+                resetForm();
+            } else
+            {
+                // 1.upload the selected thumbnail to firebase storage
+                let name = thumbnail["name"];
+                let extension = name.substring(name.lastIndexOf("."), name.length);
+                let currentTime = new Date().getTime();
+                let storageReference = firebase.storage().ref(categoryName + "/" + currentTime + extension);
+                let uploadTask = storageReference.put(thumbnail);
+                uploadTask.on("state_changed",
+                    function progress(snapshot)
+                    {
+                        let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        $("#upload-progress").html(Math.round(percentage) + "%");
+                        $("#upload-progress").attr("style", "width:" + percentage + "%");
+                    },
+                    function error(error)
+                    {
+                        $("#result").attr("class", "alert alert-danger");
+                        $("#result").html(error.message);
+                    },
+                    function complete()
+                    {
+                        // get the uploaded image url back 
+                        uploadTask.snapshot.ref.getDownloadURL().then(
+                            function (thumbnailUrl)
+                            {
+                                let category = {
+                                    "thumbnail": thumbnailUrl,
+                                    "description": categoryDescription
+                                };
+                                let parsedValueCategory = JSON.parse(JSON.stringify(category))
+                                databaseReference.set(
+                                    parsedValueCategory, function (error)
+                                {
+                                    if (error)
+                                    {
+                                        $("#result").attr("class", "alert alert-danger");
+                                        $("#result").html(error.message);
+                                    } else
+                                    {
+                                        $("#result").attr("class", "alert alert-success");
+                                        $("#result").html("Category added");
+                                    }
+                                    resetForm();
+                                });
+                            });
+                    }
+                );
+            }
+        });
+    });
+    function resetForm()
+    {
+        $("#category-form")[0].reset();
+        $("#selected-thumbnail").fadeOut();
+        $("#upload-progress").html('Completed');
+    }
+
+    let databaseCategories = firebase.database().ref("categories");
+    databaseCategories.on("value", function (categories)
+    {
+        if (categories.exists())
+        {
+            let categoriesHtml = "";
+            categories.forEach(function (category)
+            {
+                categoriesHtml += "<tr>";
+
+                // for category name
+                categoriesHtml += "<td>";
+                categoriesHtml += category.key;
+                categoriesHtml += "</td>";
+
+                // for category description
+                categoriesHtml += "<td>";
+                categoriesHtml += category.val().description;
+                categoriesHtml += "</td>";
+
+                // for category thumbnail
+                categoriesHtml += "<td><img width = '250' height = '160' style='border-radius: 5px;' src = '";
+                categoriesHtml += category.val().thumbnail;
+                categoriesHtml += "'/></td>";
+
+                categoriesHtml += "</tr>";
+            });
+            $("#categories").html(categoriesHtml);
+        }
+    });
+</script>

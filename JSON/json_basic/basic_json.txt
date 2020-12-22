@@ -1,0 +1,50 @@
+[
+  {
+    "name": "apple",
+    "email": "apple@gmail.com",
+    "links": [
+      {
+        "facebook": "https//facebook.com"
+      },
+      {
+        "google": "https//google.com"
+      },
+      {
+        "youtube": "https//youtube.com"
+      }
+    ],
+    "skills": [
+      "java",
+      "kotlin",
+      "javScript",
+      "C++",
+      "Angular"
+    ],
+    "Age": 22,
+    "isMarried": false
+  },
+  {
+    "name": "apple",
+    "email": "apple@gmail.com",
+    "links": [
+      {
+        "facebook": "https//facebook.com"
+      },
+      {
+        "google": "https//google.com"
+      },
+      {
+        "youtube": "https//youtube.com"
+      }
+    ],
+    "skills": [
+      "java",
+      "kotlin",
+      "javScript",
+      "C++",
+      "Angular"
+    ],
+    "Age": 22,
+    "isMarried": false
+  }
+]

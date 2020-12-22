@@ -1,0 +1,149 @@
+<h2>Images</h2>
+<hr />
+<div class="row">
+    <div class="col-lg-3">
+        <h4>Add a Wallpaper</h4>
+        <form id="image-form">
+            <div class="form-group">
+                <label for="category">Select Category</label>
+                <select id="category">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" />
+                <div class="invalid-feedback">
+                    Please enter title
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" />
+                <div class="invalid-feedback">
+                    Please enter description
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="wallpaper">Wallpaper</label>
+                <input type="file" class="form-control py-0" id="wallpaper" />
+
+                <div class="invalid-feedback">
+                    Please choose a valid image
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="progress">
+                    <div class="progress-bar" id="progress" style="width:0%">0%</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" id="image-save" class="btn btn-primary">Save Wallpaper</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-9">
+        <img id="image-wallpaper" width="800" height="400" />
+    </div>
+</div>
+
+<script>
+    function previewWallpaper(thumbnail)
+    {
+        if (thumbnail.files && thumbnail.files[0])
+        {
+            let reader = new FileReader();
+            reader.onload = function (e)
+            {
+                $("#image-wallpaper").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(thumbnail.files[0]);
+        }
+    }
+    $("#wallpaper").change(function ()
+    {
+        previewWallpaper(this);
+    });
+    let databaseCategories = firebase.database().ref("categories");
+    databaseCategories.once("value").then(function (categories)
+    {
+        categories.forEach(function (category)
+        {
+            $("#category").append("<option value='" + category.key + "'>" + category.key + "</option>");
+        });
+    });
+    let validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/jpg"];
+    $("#image-save").click(function ()
+    {
+        $("#title").removeClass("is-invalid");
+        $("#description").removeClass("is-invalid");
+        $("#wallpaper").removeClass("is-invalid");
+
+        let title = $("#title").val();
+        let description = $("#description").val();
+        let wallpaper = $("#wallpaper").prop("files")[0];
+        if (!title)
+        {
+            $("#title").addClass("is-invalid");
+            return;
+        }
+        if (!description)
+        {
+            $("#description").addClass("is-invalid");
+            return;
+        }
+        if (!wallpaper)
+        {
+            $("#wallpaper").addClass("is-invalid");
+            return;
+        }
+        if ($.inArray(wallpaper["type"], validImageTypes) < 0)
+        {
+            $("#wallpaper").addClass("is-invalid");
+            return;
+        }
+
+        let category = $("#category").val();
+        let name = wallpaper["name"];
+        let extension = name.substring(name.lastIndexOf("."), name.length);
+        let imageName = new Date().getTime();
+        let storageReference = firebase.storage().ref(category + "/" + imageName + extension);
+        let uploadTask = storageReference.put(wallpaper);
+
+        uploadTask.on("state_changed",
+            function progress(snapshot)
+            {
+                let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                $("#progress").html(Math.round(percentage) + "%");
+                $("#progress").attr("style", "width: " + percentage + "%");
+            },
+            function error(error)
+            {
+            },
+            function complete()
+            {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL)
+                {
+                    let database = firebase.database().ref("images").child(category);
+                    let imageId = database.push().key;
+                    let image = {
+                        "url": downloadURL,
+                        "title": title,
+                        "description": description
+                    };
+                    database.child(imageId).set(image, function (error)
+                    {
+                        alert("Image saved..");
+                        resetForm();
+                    });
+                });
+            }
+        );
+    });
+
+    function resetForm()
+    {
+        $("#image-form")[0].reset();
+        $("#img-wallpaper").attr("src", "");;
+        $("#progress").html("Completed");
+    }
+</script>

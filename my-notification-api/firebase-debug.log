@@ -1,0 +1,35 @@
+[debug] [2019-10-03T20:58:48.775Z] ----------------------------------------------------------------------
+[debug] [2019-10-03T20:58:48.778Z] Command:       /usr/bin/node /usr/bin/firebase init functions
+[debug] [2019-10-03T20:58:48.778Z] CLI Version:   7.4.0
+[debug] [2019-10-03T20:58:48.778Z] Platform:      linux
+[debug] [2019-10-03T20:58:48.778Z] Node Version:  v10.16.3
+[debug] [2019-10-03T20:58:48.778Z] Time:          Fri Oct 04 2019 02:58:48 GMT+0600 (Bangladesh Standard Time)
+[debug] [2019-10-03T20:58:48.778Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-03T20:58:48.785Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-03T20:58:48.786Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/mijanur/MYCODE/JAVASCRIPT/my-notification-api
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2019-10-03T20:59:21.425Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-10-03T20:59:21.426Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-10-03T20:59:21.827Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-03T20:59:21.959Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/availableProjects?pageSize=100  
+ 
+[debug] [2019-10-03T20:59:23.399Z] <<< HTTP RESPONSE 200

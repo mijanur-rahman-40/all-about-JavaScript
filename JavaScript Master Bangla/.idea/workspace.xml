@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0bf93348-dc8d-46b8-abf5-b297578fc1d0" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1OpGZMxv7X8mtsLB2pN43abr46D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/es6/src">
+      <method v="2" />
+    </configuration>
+    <configuration name="inheritance_with_prototype.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="inheritance_with_prototype.js" working-dir="$PROJECT_DIR$/Object_Oriented_JavaScript">
+      <method v="2" />
+    </configuration>
+    <configuration name="prototype.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="prototype.js" working-dir="$PROJECT_DIR$/Object_Oriented_JavaScript">
+      <method v="2" />
+    </configuration>
+    <configuration name="this_keyword_and_bind_method.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="this_keyword_and_bind_method.js" working-dir="$PROJECT_DIR$/Object_Oriented_JavaScript">
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/es6/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.index.js" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.inheritance_with_prototype.js" />
+        <item itemvalue="Node.js.prototype.js" />
+        <item itemvalue="Node.js.this_keyword_and_bind_method.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0bf93348-dc8d-46b8-abf5-b297578fc1d0" name="Default Changelist" comment="" />
+      <created>1564667179361</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564667179361</updated>
+      <workItem from="1564667183145" duration="1047000" />
+      <workItem from="1564679374541" duration="2264000" />
+      <workItem from="1564708112932" duration="1673000" />
+      <workItem from="1564709970591" duration="47000" />
+      <workItem from="1564710033567" duration="2740000" />
+      <workItem from="1564717124368" duration="8107000" />
+      <workItem from="1564746343393" duration="4063000" />
+      <workItem from="1564764770605" duration="2146000" />
+      <workItem from="1564772270074" duration="46000" />
+      <workItem from="1564772332377" duration="196000" />
+      <workItem from="1564772552110" duration="814000" />
+      <workItem from="1564773381877" duration="33000" />
+      <workItem from="1564773429083" duration="10000" />
+      <workItem from="1565037147371" duration="117000" />
+      <workItem from="1565037359391" duration="48000" />
+      <workItem from="1565039102650" duration="402000" />
+      <workItem from="1565059809164" duration="1520000" />
+      <workItem from="1565089718691" duration="2612000" />
+      <workItem from="1565102727811" duration="4135000" />
+      <workItem from="1565111367222" duration="18000" />
+      <workItem from="1565152191176" duration="9337000" />
+      <workItem from="1565183975980" duration="3175000" />
+      <workItem from="1565201328358" duration="589000" />
+      <workItem from="1565282407631" duration="2078000" />
+      <workItem from="1565341831770" duration="2938000" />
+      <workItem from="1565363346726" duration="8887000" />
+      <workItem from="1565374084000" duration="4000" />
+      <workItem from="1565377991688" duration="5262000" />
+      <workItem from="1565419291562" duration="145000" />
+      <workItem from="1565450744665" duration="5627000" />
+      <workItem from="1565466977443" duration="1898000" />
+      <workItem from="1565469401310" duration="470000" />
+      <workItem from="1566015889358" duration="862000" />
+      <workItem from="1566539363421" duration="1420000" />
+      <workItem from="1566556877058" duration="184000" />
+      <workItem from="1566558974495" duration="159000" />
+      <workItem from="1567192896221" duration="651000" />
+      <workItem from="1567196684860" duration="2986000" />
+      <workItem from="1567217972935" duration="4688000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Object_Oriented_JavaScript/constructor_pattern.js</url>
+          <line>65</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Object_Oriented_JavaScript/this_keyword_and_bind_method.js</url>
+          <line>18</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Object_Oriented_JavaScript/this_keyword_and_bind_method.js</url>
+          <line>39</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="dart-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

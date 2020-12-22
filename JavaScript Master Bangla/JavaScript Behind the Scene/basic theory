@@ -1,0 +1,5 @@
+JavaScript has two execution context : 
+  (1) Creational Phase.
+     tasks : (1) variable object create
+             (2) Scope chain create
+  (2) Execution Phase.

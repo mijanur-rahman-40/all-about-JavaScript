@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab:300,400,700&display=swap" rel="stylesheet">
+    <title>ajax</title>
+
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="display-4 text-center">AJAX SIMPLE PROJECT</h1>
+    <div class="row my-4">
+        <div class="col">
+            <input type="text" placeholder="Enter name" id="nameField" class="form-control">
+        </div><div class="col">
+            <input type="text" placeholder="Enter phone" id="phoneField" class="form-control">
+        </div>
+        <div class="col">
+            <input type="text" placeholder="Enter email" id="emailField" class="form-control">
+        </div>
+        <div class="col">
+           <button class="btn btn-primary" id="save-contact">SAVE CONTACT </button>
+        </div>
+    </div>
+    <div class="row my-4">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>NAME</th>
+                <th>PHONE</th>
+                <th>EMAIL</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+                <!--  <tr>
+                < td>a</td>
+                <td>a</td>
+                <td>a</td>
+                <td>
+                    <button class="btn btn-warning">EDIT</button>
+                    <button class="btn btn-danger">DELETE</button>
+                </td>
+            </tr>-->
+          
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="contact-edit-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">EDIT CONTACTS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="edit-name" class="col-form-label">Edit Name:</label>
+                        <input type="text" class="form-control" id="edit-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-phone" class="col-form-label">Edit Phone:</label>
+                        <input type="text" class="form-control" id="edit-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email" class="col-form-label">Edit Email:</label>
+                        <input type="email" class="form-control" id="edit-email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="update-contact">UPDATE CONTACT</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous">
+</script>
+<!-- Latest compiled and minified JavaScript -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+</script>
+</body>
+</html>
+
